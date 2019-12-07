@@ -23,4 +23,8 @@ class MemberApi extends Controller{
 		return MemberModel::add($data);
 	}
 
+	//根据手机号查询记录
+	public static function getPhoneApi($phone_number=''){
+		return MemberModel::getPhone($phone_number);
+	}
 }

@@ -26,5 +26,13 @@ class Gift extends Model{
         }
     }
 
+    //
+    public static function reduceGift($gift_id){
+        if(db(self::$stable)->where("id=$gift_id")->dec('number',1)->update()){
+            return true;
+        }else{
+            return false;
+        }
+    }
 
 }

@@ -16,4 +16,10 @@ class GiftApi extends Controller{
 		return GiftModel::edit($gift_id,$number);
 	}
 
+//礼品数量减1
+	public static function reduceGiftApi($gift_id){
+		return GiftModel::reduceGift($gift_id);
+	}
+
+
 }

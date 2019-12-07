@@ -18,6 +18,11 @@ class Member extends Model{
         return db(self::$stable)->alias('m')->field('m.*,g.name')->join('t_gift g','m.gift_id = g.id')->order('m.id','desc')->limit($page_id*10,10)->select();
     }
 
+
+    public static function getPhone($phone_number=''){
+        return db(self::$stable)->field('id')->where('phone_number', $phone_number)->find();
+    }
+
     //添加
     public static function add($data=array()){
         if(db(self::$stable)->insert($data)){

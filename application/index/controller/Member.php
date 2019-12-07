@@ -24,7 +24,13 @@ class Member{
         if(!$username || !$address || !$gift_id || !$get_type){
             return showJsonResult(0,'参数为空');
         }
+        //查询手否有重复的手机号
+        if(MemberApi::getPhoneApi($phone_number)){
+            return showJsonResult(0,'该手机号已领取');
+        }
         if(MemberApi::addApi($username,$phone_number,$address,$gift_id,$get_type)){
+            //礼品数量减1
+            GiftApi::reduceGiftApi($gift_id);
             return showJsonResult(1,'success');
         }
         return showJsonResult(0,'领取失败');
