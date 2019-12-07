@@ -32,7 +32,8 @@ class Member{
 
     //用户领取信息列表接口
     public function get(){
-        $list = MemberApi::getApi();
+        $page_id = Request::param('page_id','0', 'intval');
+        $list = MemberApi::getApi($page_id);
         return showJsonResult(1, 'success', $list);
     }
 

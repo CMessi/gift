@@ -7,8 +7,8 @@ use app\index\model\Member as MemberModel;
 class MemberApi extends Controller{
 
 //获取所有领取信息
-	public static function getApi(){
-		return MemberModel::get();
+	public static function getApi($page_id=0){
+		return MemberModel::get($page_id);
 	}
 
 	//添加

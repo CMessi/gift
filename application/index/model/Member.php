@@ -13,8 +13,8 @@ class Member extends Model{
     private static $stable = "member";
 
     //获取
-    public static function get(){
-        return db(self::$stable)->select();
+    public static function get($page_id=0){
+        return db(self::$stable)->order('id','desc')->limit($page_id*10,10)->select();
     }
 
     //添加
