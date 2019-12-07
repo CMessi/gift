@@ -12,9 +12,10 @@ class Member extends Model{
 
     private static $stable = "member";
 
-    //获取
+    //获取->alias('a')
+
     public static function get($page_id=0){
-        return db(self::$stable)->order('id','desc')->limit($page_id*10,10)->select();
+        return db(self::$stable)->alias('m')->field('m.*,g.name')->join('t_gift g','m.gift_id = g.id')->order('m.id','desc')->limit($page_id*10,10)->select();
     }
 
     //添加
