@@ -27,4 +27,10 @@ class MemberApi extends Controller{
 	public static function getPhoneApi($phone_number=''){
 		return MemberModel::getPhone($phone_number);
 	}
+
+	//领取的总数
+	public static function getCountApi(){
+		return MemberModel::getCount();
+	}
+
 }

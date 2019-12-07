@@ -32,5 +32,9 @@ class Member extends Model{
         }
     }
 
+    //领取的总数
+    public static function getCount(){
+        return db(self::$stable)->count();
+    }
 
 }

@@ -40,7 +40,11 @@ class Member{
     public function get(){
         $page_id = Request::param('page_id','0', 'intval');
         $list = MemberApi::getApi($page_id);
-        return showJsonResult(1, 'success', $list);
+        //领取的总数
+        $count = MemberApi::getCountApi();
+        $data['count'] = $count;
+        $data['list'] = $list;
+        return showJsonResult(1, 'success', $data);
     }
 
 }
